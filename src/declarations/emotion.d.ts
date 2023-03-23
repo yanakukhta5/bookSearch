@@ -7,8 +7,22 @@ declare module '@emotion/react' {
       secondary: string
     }
     colors: {
+      primary: string
+      secondary: string
+      third: string
       headerBg: string
       footerBg: string
+      overlay: string
+      backup: string
+      mainBg: string
+      transparent: string
+    }
+    dimensions: {
+      xs: string
+      s: string
+      md: string
+      lg: string
+      xl: string
     }
   }
 }
