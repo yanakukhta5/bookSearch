@@ -1,9 +1,17 @@
-import { Header } from "../layouts/Header"
+import { FC } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
-function App() {
+import { Layout } from '@/layout'
+import { Home, Book } from '@/pages'
 
+export const App: FC = function () {
   return (
-    <Header />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="book/:id" element={<Book />} />
+      </Route>
+    </Routes>
   )
 }
 
