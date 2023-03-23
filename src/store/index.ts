@@ -1,9 +1,14 @@
-import { configureStore, applyMiddleware } from '@reduxjs/toolkit'
-import thunk from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit'
+
+import booksReducer from './booksSlice'
 
 export const store = configureStore({
- reducer: {
-  
- },
- middleware: [thunk]
+  reducer: {
+    books: booksReducer
+  }
 })
+
+export { fetchBooks, changeQuery, resetBooksArr } from './booksSlice'
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
