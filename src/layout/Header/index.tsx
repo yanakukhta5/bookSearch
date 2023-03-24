@@ -86,8 +86,7 @@ export const Header: FC = memo(function () {
             <p>Сортировать по</p>
             <Select
               onChange={sortSelectHandle}
-              startValue={{ name: 'relevance', text: 'популярности' }}
-              options={[{ name: 'newest', text: 'дате выхода' }]}
+              options={books.bookSortOptions}
             />
           </SelectGroup>
           <SelectGroup>

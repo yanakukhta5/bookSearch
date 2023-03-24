@@ -2,9 +2,30 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { books } from '@/services'
 
-import { Item, sortBy, filterParams, bookFilterOption } from '@/types'
+import {
+  Item,
+  sortBy,
+  filterParams,
+  bookFilterOption,
+  bookSortOption
+} from '@/types'
 
 import { RootState } from '.'
+
+const bookFilterOptions = [
+  { name: 'all', text: 'все' },
+  { name: 'art', text: 'искусство' },
+  { name: 'biography', text: 'биография' },
+  { name: 'computers', text: 'программирование' },
+  { name: 'history', text: 'история' },
+  { name: 'medical', text: 'медицина' },
+  { name: 'poetry', text: 'поэзия' }
+]
+
+const bookSortOptions = [
+  { name: 'newest', text: 'дате выхода' },
+  { name: 'relevance', text: 'популярности' }
+]
 
 export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
@@ -12,9 +33,17 @@ export const fetchBooks = createAsyncThunk(
     const state = thunkAPI.getState()
     try {
       const booksState = (state as RootState).books
-      return await books.getBooks(booksState.query, booksState.startIndex, booksState.sortBy, booksState.filterParams)
-    } catch(error) {
-      thunkAPI.rejectWithValue({ message: 'Произошла ошибка при запросе книг', error })
+      return await books.getBooks(
+        booksState.query,
+        booksState.startIndex,
+        booksState.sortBy,
+        booksState.filterParams
+      )
+    } catch (error) {
+      thunkAPI.rejectWithValue({
+        message: 'Произошла ошибка при запросе книг',
+        error
+      })
     }
   }
 )
@@ -29,6 +58,7 @@ interface InitialState {
   sortBy: sortBy
   filterParams: filterParams
   bookFilterOptions: bookFilterOption[]
+  bookSortOptions: bookSortOption[]
 }
 
 const bookSlice = createSlice({
@@ -42,22 +72,19 @@ const bookSlice = createSlice({
     totalItems: 0,
     sortBy: 'relevance',
     filterParams: ['all'],
-    bookFilterOptions: [
-      { name: 'all', text: 'все' },
-      { name: 'art', text: 'искусство' },
-      { name: 'biography', text: 'биография' },
-      { name: 'computers', text: 'программирование' },
-      { name: 'history', text: 'история' },
-      { name: 'medical', text: 'медицина' },
-      { name: 'poetry', text: 'поэзия' }
-    ]
+    bookFilterOptions,
+    bookSortOptions
   } as InitialState,
   reducers: {
     changeFilterParams: (state, action) => {
       const payload = action.payload
-      if(!state.filterParams.includes(payload)) state.filterParams = [...state.filterParams, payload]
+      if (!state.filterParams.includes(payload))
+        state.filterParams = [...state.filterParams, payload]
       else if (state.filterParams.length === 1) return
-      else state.filterParams = state.filterParams.filter(filter => filter !== payload)
+      else
+        state.filterParams = state.filterParams.filter(
+          (filter) => filter !== payload
+        )
     },
     changeSortBy: (state, action) => {
       state.sortBy = action.payload
@@ -89,6 +116,12 @@ const bookSlice = createSlice({
   }
 })
 
-export const { changeQuery, resetBooksArr, changeSortBy, changeFilterParams, resetStartIndex } = bookSlice.actions
+export const {
+  changeQuery,
+  resetBooksArr,
+  changeSortBy,
+  changeFilterParams,
+  resetStartIndex
+} = bookSlice.actions
 
 export default bookSlice.reducer

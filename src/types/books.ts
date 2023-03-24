@@ -26,3 +26,8 @@ export interface bookFilterOption {
  text: string
  disabled?: boolean
 }
+
+export interface bookSortOption {
+  name: string
+  text: string
+}

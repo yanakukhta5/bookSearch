@@ -29,32 +29,33 @@ export const Home: FC = memo(function () {
     return <Loader />
   }
 
+  if (!books.booksArr.length) {
+    return <p>Не найдено нужных книг</p>
+  }
+
   return (
     <Wrapper>
-      {books.booksArr.length !== 0 && (
-        <>
-          <Total>
-            Всего по запросу <Query>{books.query}</Query> найдено{' '}
-            {books.totalItems} книг
-          </Total>
-          <Cards>
-            {books.booksArr.map((book) => (
-              <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
-            ))}
-          </Cards>
-          {isLoading && <Loader />}
-          
-          <ShowMore
-            disabled={isLoading}
-            fullwidth={true}
-            color="primary"
-            background="third"
-            onClick={showMoreBooks}
-          >
-            Показать ещё
-          </ShowMore>
-        </>
-      )}
+      <>
+        <Total>
+          Всего по запросу <Query>{books.query}</Query> найдено{' '}
+          {books.totalItems} книг
+        </Total>
+        <Cards>
+          {books.booksArr.map((book) => (
+            <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
+          ))}
+        </Cards>
+        {isLoading && <Loader />}
+        <ShowMore
+          disabled={isLoading}
+          fullwidth={true}
+          color="primary"
+          background="third"
+          onClick={showMoreBooks}
+        >
+          Показать ещё
+        </ShowMore>
+      </>
     </Wrapper>
   )
 })
