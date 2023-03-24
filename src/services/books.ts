@@ -32,13 +32,12 @@ class Books {
   }
 
   async getBook(id: string): Promise<TBook> {
-    const response = await axios.get(this.url + '/' + id, {
+    const response = await axios.get(this.url  + id, {
       params: {
         key: this.key
       }
     })
-
-    return response.data.voluneInfo
+    return response.data.volumeInfo
   }
 }
 
