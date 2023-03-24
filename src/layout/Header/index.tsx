@@ -32,12 +32,14 @@ export const Header: FC = function () {
 
   const goBack = () => navigate(-1)
 
+  const goHome = () => navigate('/')
+
   const books = useAppSelector((store) => store.books)
 
   const [query, setQuery] = useState<string>(books.query)
 
   const inputHandle = function (event: ChangeEvent<HTMLInputElement>) {
-    setQuery(event.target.value)
+    setQuery(event.target.value.trim())
   }
 
   const bookStateChange: FormEventHandler<HTMLFormElement> = function (event) {
@@ -47,6 +49,7 @@ export const Header: FC = function () {
     dispatch(resetBooksArr())
     dispatch(changeQuery(query))
     dispatch(fetchBooks())
+    goHome()
   }
 
   const sortSelectHandle = function (event: ChangeEvent<HTMLSelectElement>) {
@@ -71,7 +74,7 @@ export const Header: FC = function () {
           onSubmit={bookStateChange}
           onInputFunc={inputHandle}
           value={query}
-          disabled={books.status === 'loading' || !query.trim()}
+          disabled={books.status === 'loading' || !query}
         />
         {id && (
           <Button background="transparent" onClick={goBack}>
