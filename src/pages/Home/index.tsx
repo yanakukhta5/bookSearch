@@ -43,6 +43,7 @@ export const Home: FC = memo(function () {
             ))}
           </Cards>
           {isLoading && <Loader />}
+          
           <ShowMore
             disabled={isLoading}
             fullwidth={true}

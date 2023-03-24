@@ -8,9 +8,7 @@ export const Select: FC<SelectProps> = memo(function ({
   options,
   onChange,
   hideFirst = false
-})
-{
-console.log('kjfhgkf')
+}) {
   return (
     <Wrapper onChange={onChange}>
       {startValue && (

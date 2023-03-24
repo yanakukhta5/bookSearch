@@ -17,7 +17,6 @@ import { ErrorContent } from './ErrorContent'
 import { ErrorBoundary } from '@/components'
 
 const Component: FC<BookContentProps> = memo(function ({ book }) {
-  console.log(book)
   return (
     <>
       <Top>
