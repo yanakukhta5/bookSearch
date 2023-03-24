@@ -93,6 +93,7 @@ export const Header: FC = function () {
           <SelectGroup>
             <p>Показывать произведения категорий</p>
             <Select
+              hideFirst
               multiple
               onChange={filterSelectHandle}
               startValue={{
