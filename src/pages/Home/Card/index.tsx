@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { CardNavLink, Title, Thumbnail, Author, Category, Text } from './style'
 
 import { Item } from '@/types'
 
-export const Card: FC<Item> = function ({ volumeInfo, id }) {
+export const Card: FC<Item> = memo(function ({ volumeInfo, id }) {
   return (
     <CardNavLink to={`/book/${id}`}>
       {volumeInfo?.imageLinks?.thumbnail && <Thumbnail src={volumeInfo.imageLinks.thumbnail} alt={volumeInfo.title} />}
@@ -22,5 +22,5 @@ export const Card: FC<Item> = function ({ volumeInfo, id }) {
       </Text>
     </CardNavLink>
   )
-}
+})
 

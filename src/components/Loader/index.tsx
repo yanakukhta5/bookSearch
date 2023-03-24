@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { FC } from 'react'
 
 export const Loader = styled.span`
   --loader-size: 50px;

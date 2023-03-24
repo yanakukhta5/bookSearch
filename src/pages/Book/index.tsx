@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState, memo } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { BookContent } from './BookContent'
@@ -9,7 +9,7 @@ import { TBook } from '@/types'
 import { books } from '@/services'
 import { Wrapper } from './style'
 
-export const Book: FC = function () {
+export const Book: FC = memo(function () {
   const { id } = useParams()
 
   const [book, setBook] = useState<TBook | null>(null)
@@ -35,4 +35,4 @@ export const Book: FC = function () {
       <BookContent book={book as TBook} />
     </Wrapper>
   )
-}
+})

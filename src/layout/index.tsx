@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { Container, ErrorBoundary } from '@/components'
@@ -9,7 +9,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { Main } from './style'
 
-export const Layout: FC = function () {
+export const Layout: FC = memo(function () {
   return (
     <ErrorBoundary errorContent={<ErrorContent />}>
       <Header />
@@ -21,4 +21,4 @@ export const Layout: FC = function () {
       <Footer />
     </ErrorBoundary>
   )
-}
+})

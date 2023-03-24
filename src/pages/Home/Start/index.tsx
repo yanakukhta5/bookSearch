@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { Wrapper, Intro, Description } from './style'
 
-export const Start: FC = function () {
+export const Start: FC = memo(function () {
   return (
     <Wrapper>
       <Intro>Начните поиск книг со всего мира</Intro>
@@ -11,4 +11,4 @@ export const Start: FC = function () {
       </Description>
     </Wrapper>
   )
-}
+})

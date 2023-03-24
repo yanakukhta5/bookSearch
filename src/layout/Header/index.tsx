@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEventHandler, MouseEvent, useState } from 'react'
+import { ChangeEvent, FC, FormEventHandler, MouseEvent, useState, memo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import {
@@ -23,7 +23,7 @@ import {
   Tags
 } from './style'
 
-export const Header: FC = function () {
+export const Header: FC = memo(function () {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
@@ -38,7 +38,7 @@ export const Header: FC = function () {
 
   const [query, setQuery] = useState<string>(books.query)
 
-  const inputHandle = function (event: ChangeEvent<HTMLInputElement>) {
+  const inputHandle = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value.trim())
   }
 
@@ -119,4 +119,4 @@ export const Header: FC = function () {
       </Container>
     </Wrapper>
   )
-}
+})

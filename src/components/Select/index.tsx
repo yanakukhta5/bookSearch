@@ -1,14 +1,16 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Wrapper, Option } from './style'
 
 import { SelectProps } from './types'
 
-export const Select: FC<SelectProps> = function ({
+export const Select: FC<SelectProps> = memo(function ({
   startValue,
   options,
   onChange,
   hideFirst = false
-}) {
+})
+{
+console.log('kjfhgkf')
   return (
     <Wrapper onChange={onChange}>
       {startValue && (
@@ -23,4 +25,4 @@ export const Select: FC<SelectProps> = function ({
       ))}
     </Wrapper>
   )
-}
+})

@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { Wrapper, Copyright, Link } from './style'
 import { Container } from '@/components'
 
-export const Footer : FC = function(){
+export const Footer : FC = memo(function(){
  return (
   <Wrapper>
    <Container>
@@ -11,4 +11,4 @@ export const Footer : FC = function(){
    </Container>
   </Wrapper>
  )
-}
+})

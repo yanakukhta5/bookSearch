@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { BookContentProps } from './types'
 
@@ -16,7 +16,7 @@ import { ErrorContent } from './ErrorContent'
 
 import { ErrorBoundary } from '@/components'
 
-const Component: FC<BookContentProps> = function ({ book }) {
+const Component: FC<BookContentProps> = memo(function ({ book }) {
   console.log(book)
   return (
     <>
@@ -53,12 +53,12 @@ const Component: FC<BookContentProps> = function ({ book }) {
       {book.description && <Description>{book.description}</Description>}
     </>
   )
-}
+})
 
-export const BookContent: FC<BookContentProps> = ({ book }) => {
+export const BookContent: FC<BookContentProps> = memo(({ book }) => {
   return (
     <ErrorBoundary errorContent={<ErrorContent />}>
       <Component book={book} />
     </ErrorBoundary>
   )
-}
+})

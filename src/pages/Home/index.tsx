@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { fetchBooks } from '@/store'
 import { useAppSelector, useAppDispatch } from '@/hooks'
@@ -12,7 +12,7 @@ import { Cards, Total, Query, ShowMore } from './style'
 
 import { Loader } from '@/components'
 
-export const Home: FC = function () {
+export const Home: FC = memo(function () {
   const books = useAppSelector((store) => store.books)
   const isLoading = books.status === 'loading'
   const dispatch = useAppDispatch()
@@ -56,4 +56,4 @@ export const Home: FC = function () {
       )}
     </Wrapper>
   )
-}
+})
