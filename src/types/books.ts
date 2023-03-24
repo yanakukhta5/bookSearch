@@ -14,3 +14,15 @@ export interface Item {
  volumeInfo: TBook
  id: string
 }
+
+export type sortBy = 'relevance' | 'newest'
+
+type filterParam = 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry'
+
+export type filterParams = filterParam[]
+
+export interface bookFilterOption {
+ name: string
+ text: string
+ disabled?: boolean
+}

@@ -28,6 +28,10 @@ export const Button = styled.button<ButtonProps>`
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:disabled,
   &:active {
     transform: initial;

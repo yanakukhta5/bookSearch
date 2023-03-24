@@ -8,6 +8,7 @@ export type colors = {
     backup: string
     mainBg: string
     transparent: '#00000000'
+    accent: string
   }
 
 export type colorTheme = {

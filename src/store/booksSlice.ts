@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { books } from '@/services'
 
-import { Item } from '@/types'
+import { Item, sortBy, filterParams, bookFilterOption } from '@/types'
 
 import { RootState } from '.'
 
@@ -12,7 +12,7 @@ export const fetchBooks = createAsyncThunk(
     const state = thunkAPI.getState()
     try {
       const booksState = (state as RootState).books
-      return await books.getBooks(booksState.query, booksState.startIndex)
+      return await books.getBooks(booksState.query, booksState.startIndex, booksState.sortBy, booksState.filterParams)
     } catch(error) {
       thunkAPI.rejectWithValue({ message: 'Произошла ошибка при запросе книг', error })
     }
@@ -26,6 +26,9 @@ interface InitialState {
   error?: 'error'
   startIndex: number
   totalItems?: number
+  sortBy: sortBy
+  filterParams: filterParams
+  bookFilterOptions: bookFilterOption[]
 }
 
 const bookSlice = createSlice({
@@ -36,14 +39,37 @@ const bookSlice = createSlice({
     booksArr: [],
     status: null,
     error: undefined,
-    totalItems: 0
+    totalItems: 0,
+    sortBy: 'relevance',
+    filterParams: ['all'],
+    bookFilterOptions: [
+      { name: 'all', text: 'все' },
+      { name: 'art', text: 'искусство' },
+      { name: 'biography', text: 'биография' },
+      { name: 'computers', text: 'программирование' },
+      { name: 'history', text: 'история' },
+      { name: 'medical', text: 'медицина' },
+      { name: 'poetry', text: 'поэзия' }
+    ]
   } as InitialState,
   reducers: {
+    changeFilterParams: (state, action) => {
+      const payload = action.payload
+      if(!state.filterParams.includes(payload)) state.filterParams = [...state.filterParams, payload]
+      else if (state.filterParams.length === 1) return
+      else state.filterParams = state.filterParams.filter(filter => filter !== payload)
+    },
+    changeSortBy: (state, action) => {
+      state.sortBy = action.payload
+    },
     changeQuery: (state, action) => {
       state.query = action.payload
     },
     resetBooksArr: (state) => {
       state.booksArr = []
+    },
+    resetStartIndex: (state) => {
+      state.startIndex = 0
     }
   },
   extraReducers: (builder) => {
@@ -57,12 +83,12 @@ const bookSlice = createSlice({
       state.status = 'error'
       state.error = 'error'
     })
-    builder.addCase(fetchBooks.pending, (state, action) => {
+    builder.addCase(fetchBooks.pending, (state) => {
       state.status = 'loading'
     })
   }
 })
 
-export const { changeQuery, resetBooksArr } = bookSlice.actions
+export const { changeQuery, resetBooksArr, changeSortBy, changeFilterParams, resetStartIndex } = bookSlice.actions
 
 export default bookSlice.reducer

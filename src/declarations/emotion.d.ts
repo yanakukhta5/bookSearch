@@ -16,6 +16,7 @@ declare module '@emotion/react' {
       backup: string
       mainBg: string
       transparent: string
+      accent: string
     }
     dimensions: {
       xs: string

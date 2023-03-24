@@ -1,7 +1,13 @@
-import { Button } from '@/components'
 import styled from '@emotion/styled'
 
+import { Button } from '@/components'
+
 export const Wrapper = styled.section`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px 0;
 `
 
@@ -9,7 +15,6 @@ export const Cards = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
-  margin: 20px 0;
   @media ${({ theme }) => theme.dimensions.lg} {
     grid-template-columns: repeat(3, 1fr);
   }

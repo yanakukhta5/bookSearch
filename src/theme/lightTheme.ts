@@ -10,6 +10,7 @@ export const lightTheme: colorTheme = {
     overlay: '#00000080',
     backup: '#bbbbbb',
     mainBg: '#f5f5f5',
-    transparent: '#00000000'
+    transparent: '#00000000',
+    accent: '#691b37'
   }
 }

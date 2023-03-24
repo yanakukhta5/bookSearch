@@ -8,7 +8,3 @@ export const Input: FC<InputProps> = function ({placeholder, value, onInput}) {
     <Wrapper onInput={onInput} placeholder={placeholder} value={value}/>
   )
 }
-
-Input.defaultProps = {
-  type: 'text'
-}

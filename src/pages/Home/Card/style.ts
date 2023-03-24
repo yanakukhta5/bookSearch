@@ -13,6 +13,7 @@ export const CardNavLink = styled(NavLink)`
   font-family: 'Roboto';
   grid-template-columns: 40% 60%;
   border: 1px solid ${({ theme }) => theme.colors.backup};
+  color: ${({theme}) => theme.colors.third};
   border-radius: 6px;
   margin: 0 auto 20px;
   height: 380px;
@@ -38,6 +39,7 @@ export const Title = styled.p`
   font-size: 22px;
   max-width: 100%;
   margin: 10px 0px;
+  color: ${({theme}) => theme.colors.accent};
   @media ${({ theme }) => theme.dimensions.s} {
     font-size: 16px;
   }
