@@ -25,27 +25,35 @@ export const Home: FC = function () {
     return <Start />
   }
 
+  if (isLoading && !books.booksArr.length) {
+    return <Loader />
+  }
+
   return (
     <Wrapper>
-      <Total>
-        Всего по запросу <Query>{books.query}</Query> найдено {books.totalItems}{' '}
-        книг
-      </Total>
-      <Cards>
-        {books.booksArr.map((book) => (
-          <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
-        ))}
-      </Cards>
-      {isLoading && <Loader />}
-      <ShowMore
-        disabled={isLoading}
-        fullwidth={true}
-        color="primary"
-        background="third"
-        onClick={showMoreBooks}
-      >
-        Показать ещё
-      </ShowMore>
+      {books.booksArr.length !== 0 && (
+        <>
+          <Total>
+            Всего по запросу <Query>{books.query}</Query> найдено{' '}
+            {books.totalItems} книг
+          </Total>
+          <Cards>
+            {books.booksArr.map((book) => (
+              <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
+            ))}
+          </Cards>
+          {isLoading && <Loader />}
+          <ShowMore
+            disabled={isLoading}
+            fullwidth={true}
+            color="primary"
+            background="third"
+            onClick={showMoreBooks}
+          >
+            Показать ещё
+          </ShowMore>
+        </>
+      )}
     </Wrapper>
   )
 }

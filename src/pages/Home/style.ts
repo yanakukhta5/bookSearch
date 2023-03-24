@@ -15,6 +15,7 @@ export const Cards = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  margin-bottom: 20px;
   @media ${({ theme }) => theme.dimensions.lg} {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -45,6 +46,7 @@ export const Query = styled.span`
 `
 
 export const ShowMore = styled(Button)`
+  margin-top: 20px;
   &:hover {
     transform: ${({ disabled }) => (disabled ? 'initial' : 'scale(1.01)')};
   }

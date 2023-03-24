@@ -15,7 +15,6 @@ export const CardNavLink = styled(NavLink)`
   border: 1px solid ${({ theme }) => theme.colors.backup};
   color: ${({theme}) => theme.colors.third};
   border-radius: 6px;
-  margin: 0 auto 20px;
   height: 380px;
   break-inside: avoid;
   overflow: hidden;
