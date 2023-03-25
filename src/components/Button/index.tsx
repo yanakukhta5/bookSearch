@@ -16,7 +16,7 @@ export const Button = styled.button<ButtonProps>`
     disabled
       ? theme.colors[background as TColor] + '99'
       : theme.colors[background as TColor]};
-  color: ${({ theme, color = 'primary' }) => theme.colors[color as TColor]};
+  color: ${({ theme, color }) => theme.colors[color as TColor]};
 
   &:hover {
     transform: ${({ disabled }) => (disabled ? 'initial' : 'scale(1.05)')};
@@ -24,7 +24,7 @@ export const Button = styled.button<ButtonProps>`
 
   &:focus-visible {
     transform: scale(1.05);
-    outline: 3px solid ${({ theme, color }) => theme.colors[color as TColor]}70;
+    outline: 3px solid ${({ theme, color = 'primary' }) => theme.colors[color as TColor]}70;
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
   }
 

@@ -13,6 +13,4 @@ export type Colors = {
   }
 }
 
-export type ColorTheme = {
-  colors: Colors
-}
+export type TColor = keyof Colors['colors']

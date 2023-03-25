@@ -1,4 +1,4 @@
-import { ReactNode, HTMLProps } from 'react'
+import { HTMLProps } from 'react'
 
 import { TColor } from '@/types'
 
