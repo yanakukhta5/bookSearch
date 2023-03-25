@@ -67,7 +67,9 @@ export const Header: FC = memo(function () {
 
   return (
     <Wrapper>
+
       <Container>
+
         <Title>Search for books</Title>
         <Search
           placeholder="Введите название книги"
@@ -76,12 +78,15 @@ export const Header: FC = memo(function () {
           value={query}
           disabled={books.status === 'loading' || !query}
         />
+
         {id && (
           <Button background="transparent" onClick={goBack}>
             Go back
           </Button>
         )}
+
         <Selects>
+
           <SelectGroup>
             <p>Сортировать по</p>
             <Select
@@ -89,6 +94,7 @@ export const Header: FC = memo(function () {
               options={books.bookSortOptions}
             />
           </SelectGroup>
+
           <SelectGroup>
             <p>Показывать произведения категорий</p>
             <Select
@@ -104,6 +110,7 @@ export const Header: FC = memo(function () {
             />
           </SelectGroup>
         </Selects>
+        
         <Categories>
           Список выбранных категорий:{' '}
           <Tags>
@@ -116,6 +123,7 @@ export const Header: FC = memo(function () {
           </Tags>
         </Categories>
       </Container>
+
     </Wrapper>
   )
 })

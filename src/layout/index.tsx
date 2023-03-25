@@ -13,11 +13,13 @@ export const Layout: FC = memo(function () {
   return (
     <ErrorBoundary errorContent={<ErrorContent />}>
       <Header />
+
       <Main>
         <Container>
           <Outlet />
         </Container>
       </Main>
+      
       <Footer />
     </ErrorBoundary>
   )

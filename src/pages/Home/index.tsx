@@ -40,12 +40,15 @@ export const Home: FC = memo(function () {
           Всего по запросу <Query>{books.query}</Query> найдено{' '}
           {books.totalItems} книг
         </Total>
+
         <Cards>
           {books.booksArr.map((book) => (
             <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
           ))}
         </Cards>
+
         {isLoading && <Loader />}
+        
         <ShowMore
           disabled={isLoading}
           fullwidth={true}
