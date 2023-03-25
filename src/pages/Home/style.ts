@@ -13,18 +13,14 @@ export const Wrapper = styled.section`
 
 export const Cards = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+  justify-items: stretch;
   grid-gap: 20px;
   margin-bottom: 20px;
-  @media ${({ theme }) => theme.dimensions.lg} {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media ${({ theme }) => theme.dimensions.md} {
-    grid-template-columns: repeat(2, 1fr);
-  }
   @media ${({ theme }) => theme.dimensions.s} {
     grid-template-columns: repeat(1, 1fr);
-    margin: 10px 0;
   }
 `
 

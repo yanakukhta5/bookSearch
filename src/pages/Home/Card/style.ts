@@ -8,7 +8,6 @@ export const CardNavLink = styled(NavLink)`
   align-items: center;
   padding: 20px;
   text-align: center;
-  width: clamp(235px, 100%, 285px);
   background-color: ${({ theme }) => theme.colors.secondary};
   font-family: 'Roboto';
   grid-template-columns: 40% 60%;
