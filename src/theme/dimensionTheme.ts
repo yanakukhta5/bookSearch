@@ -1,6 +1,6 @@
-import { sizesTheme } from './types/sizesTheme'
+import { Dimensions } from '@/types'
 
-export const dimensionTheme: sizesTheme = {
+export const dimensionTheme: Dimensions = {
   dimensions: {
     xs: '(max-width: 360px)',
     s: '(max-width: 580px)',

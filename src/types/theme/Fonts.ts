@@ -1,4 +1,4 @@
-export interface typographyTheme {
+export interface Fonts {
   fonts: {
     primary: string
     secondary: string

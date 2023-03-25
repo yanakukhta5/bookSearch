@@ -1,4 +1,5 @@
-export type colors = {
+export type Colors = {
+  colors: {
     primary: string
     secondary: string
     third: string
@@ -10,7 +11,8 @@ export type colors = {
     transparent: '#00000000'
     accent: string
   }
+}
 
-export type colorTheme = {
-  colors: colors
+export type ColorTheme = {
+  colors: Colors
 }

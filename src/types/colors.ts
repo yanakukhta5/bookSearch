@@ -1,3 +1,3 @@
-import { colors } from '@/theme'
+import { Colors } from './theme'
 
-export type TColor = keyof colors
+export type TColor = keyof Colors

@@ -1,4 +1,4 @@
-export interface sizesTheme {
+export interface Dimensions {
   dimensions: {
     xs: string
     s: string

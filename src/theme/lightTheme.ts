@@ -1,6 +1,6 @@
-import { colorTheme } from './types/colorTheme'
+import { Colors } from '@/types'
 
-export const lightTheme: colorTheme = {
+export const lightTheme: Colors = {
   colors: {
     primary: '#ffffff',
     secondary: '#e6e6e3',

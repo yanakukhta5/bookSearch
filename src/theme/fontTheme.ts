@@ -1,6 +1,6 @@
-import { typographyTheme } from './types/typographyTheme'
+import { Fonts } from '@/types'
 
-export const fontTheme: typographyTheme = {
+export const fontTheme: Fonts = {
   fonts: {
     primary: 'Roboto',
     secondary: 'RobotoMedium'
