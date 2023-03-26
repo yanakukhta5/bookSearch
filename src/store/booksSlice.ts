@@ -59,6 +59,7 @@ interface InitialState {
   filterParams: filterParams
   bookFilterOptions: bookFilterOption[]
   bookSortOptions: bookSortOption[]
+  shownAllBooks: boolean
 }
 
 const bookSlice = createSlice({
@@ -73,7 +74,8 @@ const bookSlice = createSlice({
     sortBy: 'relevance',
     filterParams: ['all'],
     bookFilterOptions,
-    bookSortOptions
+    bookSortOptions,
+    shownAllBooks: false
   } as InitialState,
   reducers: {
     changeFilterParams: (state, action) => {
@@ -102,9 +104,12 @@ const bookSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
       state.status = 'success'
-      state.booksArr = [...state.booksArr, ...(action?.payload?.items || [])]
-      state.startIndex += 30
-      state.totalItems = action?.payload?.totalItems
+      if(action?.payload?.items){
+        state.booksArr = [...state.booksArr, ...action.payload.items]
+        state.startIndex += 30
+        state.totalItems = action?.payload?.totalItems
+      }
+      else state.shownAllBooks = true
     })
     builder.addCase(fetchBooks.rejected, (state) => {
       state.status = 'error'

@@ -46,15 +46,19 @@ export const Home: FC = function () {
 
       {isLoading && <Loader />}
 
-      <ShowMore
-        disabled={isLoading}
-        fullwidth={true}
-        color="primary"
-        background="third"
-        onClick={showMoreBooks}
-      >
-        Показать ещё
-      </ShowMore>
+      {!books.shownAllBooks ? (
+        <ShowMore
+          disabled={isLoading}
+          fullwidth={true}
+          color="primary"
+          background="third"
+          onClick={showMoreBooks}
+        >
+          Показать ещё
+        </ShowMore>
+      ) : (
+        <p>По данному запросу больше нет книг</p>
+      )}
     </Wrapper>
   )
 }

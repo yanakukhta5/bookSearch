@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from 'react'
+import { FC, ChangeEvent, memo } from 'react'
 
 import { Wrapper } from './style'
 
@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks'
 
 import { SelectGroup } from './SelectGroup'
 
-export const Groups: FC = function () {
+export const Groups: FC = memo(function () {
   const dispatch = useAppDispatch()
   const books = useAppSelector((store) => store.books)
 
@@ -43,4 +43,4 @@ export const Groups: FC = function () {
       />
     </Wrapper>
   )
-}
+})
