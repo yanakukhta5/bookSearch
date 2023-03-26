@@ -3,6 +3,8 @@ import { Wrapper, Option } from './style'
 
 import { SelectProps } from './types'
 
+export type { SelectProps } from './types'
+
 export const Select: FC<SelectProps> = memo(function ({
   startValue,
   options,

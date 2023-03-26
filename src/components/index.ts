@@ -3,6 +3,7 @@ export { Button } from './Button'
 export { Container } from './Container'
 
 export { Select } from './Select'
+export type { SelectProps } from './Select'
 
 export { Input } from './Input'
 
