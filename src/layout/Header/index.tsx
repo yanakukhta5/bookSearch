@@ -1,16 +1,11 @@
-import { ChangeEvent, FC, FormEventHandler, MouseEvent, useState, memo } from 'react'
+import { ChangeEvent, FC, MouseEvent, useState, memo } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import {
-  changeQuery,
-  fetchBooks,
-  resetBooksArr,
-  changeSortBy,
-  changeFilterParams,
-  resetStartIndex
-} from '@/store'
-import { Search, Container, Button, Select } from '@/components'
+import { resetBooksArr, changeSortBy, changeFilterParams } from '@/store'
+import { Container, Button, Select } from '@/components'
 import { useAppDispatch, useAppSelector } from '@/hooks'
+
+import { SearchForm } from './SearchForm'
 
 import {
   Wrapper,
@@ -24,33 +19,13 @@ import {
 } from './style'
 
 export const Header: FC = memo(function () {
-  const navigate = useNavigate()
-
   const dispatch = useAppDispatch()
+  const books = useAppSelector((store) => store.books)
 
   const { id } = useParams()
 
+  const navigate = useNavigate()
   const goBack = () => navigate(-1)
-
-  const goHome = () => navigate('/')
-
-  const books = useAppSelector((store) => store.books)
-
-  const [query, setQuery] = useState<string>(books.query)
-
-  const inputHandle = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value.trim())
-  }
-
-  const bookStateChange: FormEventHandler<HTMLFormElement> = function (event) {
-    event?.preventDefault()
-    if (!query) return
-    dispatch(resetStartIndex())
-    dispatch(resetBooksArr())
-    dispatch(changeQuery(query))
-    dispatch(fetchBooks())
-    goHome()
-  }
 
   const sortSelectHandle = function (event: ChangeEvent<HTMLSelectElement>) {
     dispatch(changeSortBy(event.target.value))
@@ -67,17 +42,10 @@ export const Header: FC = memo(function () {
 
   return (
     <Wrapper>
-
       <Container>
-
         <Title>Search for books</Title>
-        <Search
-          placeholder="Введите название книги"
-          onSubmit={bookStateChange}
-          onInputFunc={inputHandle}
-          value={query}
-          disabled={books.status === 'loading' || !query}
-        />
+
+        <SearchForm />
 
         {id && (
           <Button background="transparent" onClick={goBack}>
@@ -86,7 +54,6 @@ export const Header: FC = memo(function () {
         )}
 
         <Selects>
-
           <SelectGroup>
             <p>Сортировать по</p>
             <Select
@@ -110,7 +77,7 @@ export const Header: FC = memo(function () {
             />
           </SelectGroup>
         </Selects>
-        
+
         <Categories>
           Список выбранных категорий:{' '}
           <Tags>
@@ -123,7 +90,6 @@ export const Header: FC = memo(function () {
           </Tags>
         </Categories>
       </Container>
-
     </Wrapper>
   )
 })

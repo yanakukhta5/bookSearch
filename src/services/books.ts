@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { Item, TBook, sortBy, filterParams } from '@/types'
 
-interface Response {
+interface TBooks {
   items: Item[]
   totalItems: number
 }
@@ -16,7 +16,7 @@ class Books {
     startIndex: number,
     orderBy: sortBy = 'relevance',
     filterParams: filterParams = ['all']
-  ): Promise<Response> {
+  ): Promise<TBooks> {
     const subject = 'subject:' + filterParams.join('+')
     const response = await axios.get(this.url, {
       params: {
