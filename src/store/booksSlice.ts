@@ -104,12 +104,11 @@ const bookSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
       state.status = 'success'
-      if(action?.payload?.items){
+      if (action?.payload?.items) {
         state.booksArr = [...state.booksArr, ...action.payload.items]
         state.startIndex += 30
         state.totalItems = action?.payload?.totalItems
-      }
-      else state.shownAllBooks = true
+      } else state.shownAllBooks = true
     })
     builder.addCase(fetchBooks.rejected, (state) => {
       state.status = 'error'
