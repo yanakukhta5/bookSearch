@@ -1,18 +1,16 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
 
 import { fetchBooks } from '@/store'
 import { useAppSelector, useAppDispatch } from '@/hooks'
 
-import { Wrapper } from './style'
-
 import { Start } from './Start'
 import { Card } from './Card'
 
-import { Cards, Total, Query, ShowMore } from './style'
+import { Wrapper, Cards, Total, Query, ShowMore } from './style'
 
 import { Loader } from '@/components'
 
-export const Home: FC = memo(function () {
+export const Home: FC = function () {
   const books = useAppSelector((store) => store.books)
   const isLoading = books.status === 'loading'
   const dispatch = useAppDispatch()
@@ -35,30 +33,28 @@ export const Home: FC = memo(function () {
 
   return (
     <Wrapper>
-      <>
-        <Total>
-          Всего по запросу <Query>{books.query}</Query> найдено{' '}
-          {books.totalItems} книг
-        </Total>
+      <Total>
+        Всего по запросу <Query>{books.query}</Query> найдено {books.totalItems}{' '}
+        книг
+      </Total>
 
-        <Cards>
-          {books.booksArr.map((book) => (
-            <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
-          ))}
-        </Cards>
+      <Cards>
+        {books.booksArr.map((book) => (
+          <Card key={book.id} id={book.id} volumeInfo={book.volumeInfo} />
+        ))}
+      </Cards>
 
-        {isLoading && <Loader />}
-        
-        <ShowMore
-          disabled={isLoading}
-          fullwidth={true}
-          color="primary"
-          background="third"
-          onClick={showMoreBooks}
-        >
-          Показать ещё
-        </ShowMore>
-      </>
+      {isLoading && <Loader />}
+
+      <ShowMore
+        disabled={isLoading}
+        fullwidth={true}
+        color="primary"
+        background="third"
+        onClick={showMoreBooks}
+      >
+        Показать ещё
+      </ShowMore>
     </Wrapper>
   )
-})
+}

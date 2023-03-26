@@ -43,7 +43,7 @@ export const Description = styled.section`
   border: 1px solid ${({ theme }) => theme.colors.backup};
 `
 
-export const Text = styled.div`
+export const Block = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

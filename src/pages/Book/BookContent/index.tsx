@@ -5,7 +5,7 @@ import { BookContentProps } from './types'
 import {
   Top,
   Image,
-  Text,
+  Block,
   Authors,
   Title,
   Description,
@@ -22,7 +22,7 @@ const Component: FC<BookContentProps> = memo(function ({ book }) {
       <Top>
         <Image src={book.imageLinks.thumbnail} alt={book.title} />
 
-        <Text>
+        <Block>
           <Title>{book.title}</Title>
 
           <Categories>
@@ -46,10 +46,12 @@ const Component: FC<BookContentProps> = memo(function ({ book }) {
               </>
             )}
           </Authors>
-        </Text>
+        </Block>
       </Top>
 
-      {book.description && <Description>{book.description}</Description>}
+      {book.description && (
+        <Description dangerouslySetInnerHTML={{ __html: book.description }} />
+      )}
     </>
   )
 })

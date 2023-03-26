@@ -76,7 +76,7 @@ export const Tags = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 10px;
-  @media ${({ theme }) => theme.dimensions.s}{
+  @media ${({ theme }) => theme.dimensions.s} {
     align-items: center;
     flex-direction: column;
   }

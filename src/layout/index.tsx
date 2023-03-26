@@ -19,7 +19,7 @@ export const Layout: FC = memo(function () {
           <Outlet />
         </Container>
       </Main>
-      
+
       <Footer />
     </ErrorBoundary>
   )

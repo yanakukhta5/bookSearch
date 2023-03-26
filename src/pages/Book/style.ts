@@ -9,4 +9,3 @@ export const Wrapper = styled.section`
   gap: 20px;
   width: 100%;
 `
-

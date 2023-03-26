@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 export const Loader = styled.span`
   --loader-size: 50px;
   --loader-border-size: 4px;
-  --loader-border-color: ${({theme}) => theme.colors.third};
+  --loader-border-color: ${({ theme }) => theme.colors.third};
   width: var(--loader-size);
   height: var(--loader-size);
   border: var(--loader-border-size) solid var(--loader-border-color);

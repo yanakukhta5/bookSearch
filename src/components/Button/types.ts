@@ -2,8 +2,9 @@ import { HTMLProps } from 'react'
 
 import { TColor } from '@/types'
 
-export type ButtonProps = HTMLProps<HTMLButtonElement> & Partial<{
-  fullwidth?: boolean
-  color?: TColor
-  background?: TColor
-}>
+export type ButtonProps = HTMLProps<HTMLButtonElement> &
+  Partial<{
+    fullwidth?: boolean
+    color?: TColor
+    background?: TColor
+  }>

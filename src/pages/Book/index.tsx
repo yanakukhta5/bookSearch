@@ -1,5 +1,5 @@
-import { FC, useEffect, useState, memo } from 'react'
 import { useParams } from 'react-router-dom'
+import { FC, useEffect, useState } from 'react'
 
 import { BookContent } from './BookContent'
 
@@ -9,20 +9,17 @@ import { TBook } from '@/types'
 import { books } from '@/services'
 import { Wrapper } from './style'
 
-export const Book: FC = memo(function () {
+export const Book: FC = function () {
   const { id } = useParams()
 
   const [book, setBook] = useState<TBook | null>(null)
-
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const getBook = async () => await books.getBook(id as string)
 
   useEffect(() => {
     getBook()
-      .then((result) => {
-        setBook(result)
-      })
+      .then(setBook)
       .finally(() => setIsLoading(false))
   }, [])
 
@@ -35,4 +32,4 @@ export const Book: FC = memo(function () {
       <BookContent book={book as TBook} />
     </Wrapper>
   )
-})
+}

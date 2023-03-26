@@ -14,7 +14,6 @@ import {
 import { useAppDispatch, useAppSelector } from '@/hooks'
 
 export const SearchForm: FC = function () {
-
   const books = useAppSelector((store) => store.books)
   const dispatch = useAppDispatch()
 
@@ -24,9 +23,9 @@ export const SearchForm: FC = function () {
   const [query, setQuery] = useState<string>(books.query)
 
   const inputHandle = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value.trim())
+    setQuery(event.target.value)
   }
-  
+
   const bookStateChange: FormEventHandler<HTMLFormElement> = function (event) {
     event?.preventDefault()
     if (!query) return

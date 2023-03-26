@@ -8,7 +8,14 @@ export const store = configureStore({
   }
 })
 
-export { fetchBooks, changeQuery, resetBooksArr, changeSortBy, changeFilterParams, resetStartIndex } from './booksSlice'
+export {
+  fetchBooks,
+  changeQuery,
+  resetBooksArr,
+  changeSortBy,
+  changeFilterParams,
+  resetStartIndex
+} from './booksSlice'
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

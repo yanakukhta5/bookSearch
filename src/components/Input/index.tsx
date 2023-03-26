@@ -1,10 +1,11 @@
-import { FC, memo } from 'react'
+import styled from '@emotion/styled'
 
-import { InputProps } from './types'
-import { Wrapper } from './style'
-
-export const Input: FC<InputProps> = memo(function ({placeholder, value, onInput}) {
-  return (
-    <Wrapper onInput={onInput} placeholder={placeholder} value={value}/>
-  )
-})
+export const Input = styled.input`
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.colors.backup};
+  height: 100%;
+  outline: none;
+  padding: 5px 10px;
+  font-size: 16px;
+`

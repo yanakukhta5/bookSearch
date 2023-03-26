@@ -18,6 +18,7 @@ class Books {
     filterParams: filterParams = ['all']
   ): Promise<TBooks> {
     const subject = 'subject:' + filterParams.join('+')
+
     const response = await axios.get(this.url, {
       params: {
         q: query + subject,
@@ -28,15 +29,17 @@ class Books {
         orderBy
       }
     })
+
     return response.data
   }
 
   async getBook(id: string): Promise<TBook> {
-    const response = await axios.get(this.url  + id, {
+    const response = await axios.get(this.url + id, {
       params: {
         key: this.key
       }
     })
+
     return response.data.volumeInfo
   }
 }

@@ -24,14 +24,14 @@ export const Wrapper = styled.footer`
 `
 
 export const Copyright = styled.p`
-  color: ${({theme}) => theme.colors.backup};
+  color: ${({ theme }) => theme.colors.backup};
   &::before {
-    content: "©";
+    content: '©';
     padding-right: 5px;
   }
 `
 
 export const Link = styled.a`
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   font-family: Roboto;
 `
