@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, memo } from 'react'
+import { FC, ChangeEvent, memo, useCallback } from 'react'
 
 import { Wrapper } from './style'
 
@@ -12,14 +12,14 @@ export const Groups: FC = memo(function () {
   const dispatch = useAppDispatch()
   const books = useAppSelector((store) => store.books)
 
-  const sortSelectHandle = function (event: ChangeEvent<HTMLSelectElement>) {
+  const sortSelectHandle = useCallback(function (event: ChangeEvent<HTMLSelectElement>) {
     dispatch(changeSortBy(event.target.value))
     dispatch(resetBooksArr())
-  }
+  }, [books.bookSortOptions])
 
-  const filterSelectHandle = function (event: ChangeEvent<HTMLSelectElement>) {
+  const filterSelectHandle = useCallback(function (event: ChangeEvent<HTMLSelectElement>) {
     dispatch(changeFilterParams(event.target.value))
-  }
+  }, [books.bookFilterOptions])
 
   return (
     <Wrapper>
