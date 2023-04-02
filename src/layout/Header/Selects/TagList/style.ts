@@ -7,10 +7,13 @@ export const Categories = styled.div`
   margin-top: 20px;
   text-align: center;
   align-items: center;
+  width: calc(100vw - 40px);
 `
 
 export const Tags = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-top: 10px;
   @media ${({ theme }) => theme.dimensions.s} {

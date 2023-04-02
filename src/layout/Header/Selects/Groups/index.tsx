@@ -12,14 +12,20 @@ export const Groups: FC = memo(function () {
   const dispatch = useAppDispatch()
   const books = useAppSelector((store) => store.books)
 
-  const sortSelectHandle = useCallback(function (event: ChangeEvent<HTMLSelectElement>) {
-    dispatch(changeSortBy(event.target.value))
-    dispatch(resetBooksArr())
-  }, [books.bookSortOptions])
+  const sortSelectHandle = useCallback(
+    function (event: ChangeEvent<HTMLSelectElement>) {
+      dispatch(changeSortBy(event.target.value))
+      dispatch(resetBooksArr())
+    },
+    [books.bookSortOptions]
+  )
 
-  const filterSelectHandle = useCallback(function (event: ChangeEvent<HTMLSelectElement>) {
-    dispatch(changeFilterParams(event.target.value))
-  }, [books.bookFilterOptions])
+  const filterSelectHandle = useCallback(
+    function (event: ChangeEvent<HTMLSelectElement>) {
+      dispatch(changeFilterParams(event.target.value))
+    },
+    [books.bookFilterOptions]
+  )
 
   return (
     <Wrapper>
