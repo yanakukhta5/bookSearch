@@ -80,6 +80,17 @@ const bookSlice = createSlice({
   reducers: {
     changeFilterParams: (state, action) => {
       const payload = action.payload
+
+      if (payload === 'all') {
+        state.filterParams = state.filterParams.filter(
+          (filter) => filter === payload
+        )
+      } else {
+        state.filterParams = state.filterParams.filter(
+          (filter) => filter !== 'all'
+        )
+      }
+
       if (!state.filterParams.includes(payload))
         state.filterParams = [...state.filterParams, payload]
       else if (state.filterParams.length === 1) return
